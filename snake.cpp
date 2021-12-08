@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <iostream>
+#include <conio.h>
 
 using namespace std;
 
@@ -11,7 +12,7 @@ enum eDirection
 {
     stop = 0,
     Left,
-    Rgith,
+    Right,
     Top,
     Bottom
 };
@@ -73,6 +74,27 @@ void map()
 
 void control()
 {
+    if (kbhit())
+    {
+        switch (getch())
+        {
+        case 72:
+            dir = Top;
+            break;
+        case 80:
+            dir = Bottom;
+            break;
+        case 75:
+            dir = Left;
+            break;
+        case 77:
+            dir = Right;
+            break;
+        case 's':
+            gameOver = true;
+            break
+        }
+    }
 }
 
 void rulse()
@@ -80,6 +102,8 @@ void rulse()
     if (x == xPoint && y == yPoint)
     {
         score++;
+        xPoint = rand() % width;
+        yPoint = rand() % height;
     }
 
     if (x > width || x < 0 || y > height || y < 0)
