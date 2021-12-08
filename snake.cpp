@@ -4,8 +4,8 @@
 using namespace std;
 
 bool gameOver;
-const int width = 20;
-const int height = 20;
+const int width = 40;
+const int height = 40;
 int x, y, xPoint, yPoint;
 enum eDirection
 {
@@ -29,7 +29,7 @@ void setUp()
 
 void map()
 {
-    system("clear");
+    system("cls");
 
     for (int i = 0; i < width + 1; i++)
     {
@@ -45,7 +45,20 @@ void map()
             {
                 cout << "#";
             }
-            cout << " ";
+
+            if (i == y && j == x)
+            {
+                cout << "*";
+            }
+
+            else if (i == yPoint && j == xPoint)
+            {
+                cout << "@";
+            }
+            else
+            {
+                cout << " ";
+            }
         }
         cout << endl;
     }
