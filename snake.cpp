@@ -8,20 +8,12 @@ bool gameOver;
 const int width = 40;
 const int height = 20;
 int x, y, xPoint, yPoint, score = 0;
-enum eDirection
-{
-    stop = 0,
-    Left,
-    Right,
-    Top,
-    Bottom
-};
-eDirection dir;
+char dir;
 
 void setUp()
 {
     gameOver = false;
-    dir = stop;
+    dir = 's';
     x = width / 2;
     y = height / 2;
     xPoint = rand() % width;
@@ -79,20 +71,20 @@ void control()
         switch (getch())
         {
         case 72:
-            dir = Top;
+            dir = 't';
             break;
         case 80:
-            dir = Bottom;
+            dir = 'b';
             break;
         case 75:
-            dir = Left;
+            dir = 'l';
             break;
         case 77:
-            dir = Right;
+            dir = 'r';
             break;
-        case 's':
+        case 'x':
             gameOver = true;
-            break
+            break;
         }
     }
 }
@@ -109,6 +101,22 @@ void rulse()
     if (x > width || x < 0 || y > height || y < 0)
     {
         gameOver = true;
+    }
+
+    switch (dir)
+    {
+    case 't':
+        y -= 1;
+        break;
+    case 'b':
+        y += 1;
+        break;
+    case 'l':
+        x -= 1;
+        break;
+    case 'r':
+        x += 1;
+        break;
     }
 }
 
