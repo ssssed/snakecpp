@@ -5,8 +5,8 @@ using namespace std;
 
 bool gameOver;
 const int width = 40;
-const int height = 40;
-int x, y, xPoint, yPoint;
+const int height = 20;
+int x, y, xPoint, yPoint, score = 0;
 enum eDirection
 {
     stop = 0,
@@ -68,6 +68,7 @@ void map()
         cout << "#";
     }
     cout << endl;
+    printf("Score: %i\n", score);
 }
 
 void control()
@@ -76,6 +77,15 @@ void control()
 
 void rulse()
 {
+    if (x == xPoint && y == yPoint)
+    {
+        score++;
+    }
+
+    if (x > width || x < 0 || y > height || y < 0)
+    {
+        gameOver = true;
+    }
 }
 
 int main()
