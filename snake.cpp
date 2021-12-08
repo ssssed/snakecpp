@@ -57,12 +57,22 @@ void map()
     cout << endl;
 }
 
+void control()
+{
+}
+
+void rulse()
+{
+}
+
 int main()
 {
     setUp();
     while (!gameOver)
     {
         map();
+        control();
+        rulse();
     }
     return 0;
 }
